@@ -81,6 +81,7 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibMisc;
 import vazkii.botania.common.network.GuiHandler;
+import vazkii.botania.common.network.PacketHandler;
 import vazkii.botania.common.world.SkyblockWorldEvents;
 import vazkii.botania.common.world.WorldTypeSkyblock;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -117,6 +118,8 @@ public class CommonProxy {
 		ModBrewRecipes.init();
 		ModAchievements.init();
 		ModMultiblocks.init();
+
+		PacketHandler.initPackets();
 
 		if(Botania.etFuturumLoaded)
 			ModBanners.init();
