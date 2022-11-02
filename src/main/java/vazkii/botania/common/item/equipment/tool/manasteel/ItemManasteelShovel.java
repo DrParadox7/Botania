@@ -37,6 +37,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import static net.minecraft.block.material.Material.grass;
+
 public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, ISortableTool {
 
 	private static final int MANA_PER_DAMAGE = 60;
@@ -98,7 +100,7 @@ public class ItemManasteelShovel extends ItemSpade implements IManaUsingItem, IS
 
 			Block block = p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_);
 
-			if(p_77648_7_ != 0 && p_77648_3_.getBlock(p_77648_4_, p_77648_5_ + 1, p_77648_6_).isAir(p_77648_3_, p_77648_4_, p_77648_5_ + 1, p_77648_6_) && (block == Blocks.grass || block == Blocks.dirt)) {
+			if(p_77648_7_ != 0 && p_77648_3_.getBlock(p_77648_4_, p_77648_5_ + 1, p_77648_6_).isAir(p_77648_3_, p_77648_4_, p_77648_5_ + 1, p_77648_6_) && (block == Blocks.grass || block == Blocks.dirt || (block.getMaterial() == grass && block.getUnlocalizedName().contains("grass_path")))) {
 				Block block1 = Blocks.farmland;
 				p_77648_3_.playSoundEffect(p_77648_4_ + 0.5F, p_77648_5_ + 0.5F, p_77648_6_ + 0.5F, block1.stepSound.getStepResourcePath(), (block1.stepSound.getVolume() + 1.0F) / 2.0F, block1.stepSound.getPitch() * 0.8F);
 
