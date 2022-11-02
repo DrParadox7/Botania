@@ -74,7 +74,7 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 	}
 
 	@Override
-	public boolean getBlocksMovement(IBlockAccess p_149655_1_, int p_149655_2_, int p_149655_3_, int p_149655_4_) {
+	public boolean getBlocksMovement(IBlockAccess worldIn, int x, int y, int z) {
 		return false;
 	}
 
@@ -85,12 +85,12 @@ public class BlockLightRelay extends BlockModContainer implements IWandable, ILe
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_) {
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World worldIn, int x, int y, int z) {
 		return null;
 	}
 
 	@Override
-	public int tickRate(World p_149738_1_) {
+	public int tickRate(World worldIn) {
 		return 2;
 	}
 

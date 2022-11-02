@@ -71,13 +71,13 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+	public Item getItemDropped(int meta, Random random, int fortune) {
 		return null;
 	}
 
 	@Override
-	public int damageDropped(int p_149692_1_) {
-		return p_149692_1_ & 7;
+	public int damageDropped(int meta) {
+		return meta & 7;
 	}
 
 	@Override
@@ -93,8 +93,8 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_) {
-		p_149689_1_.setBlock(p_149689_2_, p_149689_3_ + 1, p_149689_4_, this, p_149689_6_.getItemDamage() | 8, 2);
+	public void onBlockPlacedBy(World worldIn, int x, int y, int z, EntityLivingBase placer, ItemStack itemIn) {
+		worldIn.setBlock(x, y + 1, z, this, itemIn.getItemDamage() | 8, 2);
 	}
 
 	@Override
@@ -103,58 +103,58 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public void harvestBlock(World p_149636_1_, EntityPlayer p_149636_2_, int p_149636_3_, int p_149636_4_, int p_149636_5_, int p_149636_6_) {
-		if(p_149636_1_.isRemote || p_149636_2_.getCurrentEquippedItem() == null || p_149636_2_.getCurrentEquippedItem().getItem() != Items.shears || func_149887_c(p_149636_6_))
-			harvestBlockCopy(p_149636_1_, p_149636_2_, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_);
+	public void harvestBlock(World worldIn, EntityPlayer player, int x, int y, int z, int meta) {
+		if(worldIn.isRemote || player.getCurrentEquippedItem() == null || player.getCurrentEquippedItem().getItem() != Items.shears || func_149887_c(meta))
+			harvestBlockCopy(worldIn, player, x, y, z, meta);
 	}
 
 	// This is how I get around encapsulation
-	public void harvestBlockCopy(World p_149636_1_, EntityPlayer p_149636_2_, int p_149636_3_, int p_149636_4_, int p_149636_5_, int p_149636_6_) {
-		p_149636_2_.addStat(StatList.mineBlockStatArray[getIdFromBlock(this)], 1);
-		p_149636_2_.addExhaustion(0.025F);
+	public void harvestBlockCopy(World worldIn, EntityPlayer player, int x, int y, int z, int meta) {
+		player.addStat(StatList.mineBlockStatArray[getIdFromBlock(this)], 1);
+		player.addExhaustion(0.025F);
 
-		if(this.canSilkHarvest(p_149636_1_, p_149636_2_, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_) && EnchantmentHelper.getSilkTouchModifier(p_149636_2_)) {
+		if(this.canSilkHarvest(worldIn, player, x, y, z, meta) && EnchantmentHelper.getSilkTouchModifier(player)) {
 			ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-			ItemStack itemstack = createStackedBlock(p_149636_6_);
+			ItemStack itemstack = createStackedBlock(meta);
 
 			if(itemstack != null)
 				items.add(itemstack);
 
-			ForgeEventFactory.fireBlockHarvesting(items, p_149636_1_, this, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_, 0, 1.0f, true, p_149636_2_);
+			ForgeEventFactory.fireBlockHarvesting(items, worldIn, this, x, y, z, meta, 0, 1.0f, true, player);
 			for(ItemStack is : items)
-				this.dropBlockAsItem(p_149636_1_, p_149636_3_, p_149636_4_, p_149636_5_, is);
+				this.dropBlockAsItem(worldIn, x, y, z, is);
 		} else {
-			harvesters.set(p_149636_2_);
-			int i1 = EnchantmentHelper.getFortuneModifier(p_149636_2_);
-			this.dropBlockAsItem(p_149636_1_, p_149636_3_, p_149636_4_, p_149636_5_, p_149636_6_, i1);
+			harvesters.set(player);
+			int i1 = EnchantmentHelper.getFortuneModifier(player);
+			this.dropBlockAsItem(worldIn, x, y, z, meta, i1);
 			harvesters.set(null);
 		}
 	}
 
 	@Override
-	public void onBlockHarvested(World p_149681_1_, int p_149681_2_, int p_149681_3_, int p_149681_4_, int p_149681_5_, EntityPlayer p_149681_6_) {
-		if(func_149887_c(p_149681_5_)) {
-			if(p_149681_1_.getBlock(p_149681_2_, p_149681_3_ - 1, p_149681_4_) == this) {
-				if(!p_149681_6_.capabilities.isCreativeMode) {
-					int i1 = p_149681_1_.getBlockMetadata(p_149681_2_, p_149681_3_ - 1, p_149681_4_);
+	public void onBlockHarvested(World worldIn, int x, int y, int z, int meta, EntityPlayer player) {
+		if(func_149887_c(meta)) {
+			if(worldIn.getBlock(x, y - 1, z) == this) {
+				if(!player.capabilities.isCreativeMode) {
+					int i1 = worldIn.getBlockMetadata(x, y - 1, z);
 					int j1 = func_149890_d(i1);
 
 					if(j1 != 3 && j1 != 2);
-					//p_149681_1_.func_147480_a(p_149681_2_, p_149681_3_ - 1, p_149681_4_, true);
+					//worldIn.func_147480_a(x, y - 1, z, true);
 					else {
-						/*if (!p_149681_1_.isRemote && p_149681_6_.getCurrentEquippedItem() != null && p_149681_6_.getCurrentEquippedItem().getItem() == Items.shears)
+						/*if (!worldIn.isRemote && player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == Items.shears)
                         {
-                            this.func_149886_b(p_149681_1_, p_149681_2_, p_149681_3_, p_149681_4_, i1, p_149681_6_);
+                            this.func_149886_b(worldIn, x, y, z, i1, player);
                         }*/
 
-						p_149681_1_.setBlockToAir(p_149681_2_, p_149681_3_ - 1, p_149681_4_);
+						worldIn.setBlockToAir(x, y - 1, z);
 					}
-				} else p_149681_1_.setBlockToAir(p_149681_2_, p_149681_3_ - 1, p_149681_4_);
+				} else worldIn.setBlockToAir(x, y - 1, z);
 			}
-		} else if(p_149681_6_.capabilities.isCreativeMode && p_149681_1_.getBlock(p_149681_2_, p_149681_3_ + 1, p_149681_4_) == this)
-			p_149681_1_.setBlock(p_149681_2_, p_149681_3_ + 1, p_149681_4_, Blocks.air, 0, 2);
+		} else if(player.capabilities.isCreativeMode && worldIn.getBlock(x, y + 1, z) == this)
+			worldIn.setBlock(x, y + 1, z, Blocks.air, 0, 2);
 
-		//super.onBlockHarvested(p_149681_1_, p_149681_2_, p_149681_3_, p_149681_4_, p_149681_5_, p_149681_6_);
+		//super.onBlockHarvested(worldIn, x, y, z, meta, player);
 	}
 
 	@Override
@@ -175,9 +175,9 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-		boolean top = func_149887_c(p_149691_2_);
-		return (ConfigHandler.altFlowerTextures ? top ? doublePlantTopIconsAlt : doublePlantBottomIconsAlt : top ? doublePlantTopIcons : doublePlantBottomIcons)[p_149691_2_ & 7];
+	public IIcon getIcon(int side, int meta) {
+		boolean top = func_149887_c(meta);
+		return (ConfigHandler.altFlowerTextures ? top ? doublePlantTopIconsAlt : doublePlantBottomIconsAlt : top ? doublePlantTopIcons : doublePlantBottomIcons)[meta & 7];
 	}
 
 	@Override
@@ -211,9 +211,9 @@ public class BlockModDoubleFlower extends BlockDoublePlant implements ILexiconab
 	}
 
 	@Override
-	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_) {
+	public void getSubBlocks(Item itemIn, CreativeTabs tab, List list) {
 		for(int i = 0; i < COUNT; ++i)
-			p_149666_3_.add(new ItemStack(p_149666_1_, 1, i));
+			list.add(new ItemStack(itemIn, 1, i));
 	}
 
 	@Override

@@ -153,7 +153,7 @@ public class BlockHourglass extends BlockModContainer implements IManaTrigger, I
 	}
 
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+	public IIcon getIcon(int side, int meta) {
 		return ModBlocks.manaGlass.getIcon(0, 0);
 	}
 

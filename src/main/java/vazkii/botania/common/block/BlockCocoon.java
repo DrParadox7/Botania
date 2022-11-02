@@ -47,7 +47,7 @@ public class BlockCocoon extends BlockModContainer implements ILexiconable {
 	}
 
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
+	public IIcon getIcon(int side, int meta) {
 		return Blocks.web.getBlockTextureFromSide(0);
 	}
 

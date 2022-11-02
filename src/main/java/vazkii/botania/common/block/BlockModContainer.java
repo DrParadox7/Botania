@@ -45,9 +45,9 @@ public abstract class BlockModContainer<T extends TileEntity> extends BlockConta
 	}
 
 	@Override
-	public Block setLightLevel(float p_149715_1_) {
-		originalLight = (int) (p_149715_1_ * 15);
-		return super.setLightLevel(p_149715_1_);
+	public Block setLightLevel(float value) {
+		originalLight = (int) (value * 15);
+		return super.setLightLevel(value);
 	}
 
 	@Override
