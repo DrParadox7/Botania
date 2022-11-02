@@ -1409,6 +1409,10 @@ item.botania:lensFirework.name=Mana Lens: Celebratory
 item.botania:lensFirework.short=Celebratory
 item.botania:lensFlare.name=Mana Lens: Flare
 item.botania:lensFlare.short=Flare
+item.botania:lensMessenger.name=Mana Lens: Messenger
+item.botania:lensMessenger.short=Messenger
+item.botania:lensTripwire.name=Mana Lens: Tripwire
+item.botania:lensTripwire.short=Tripwire
 item.botania:rune0.name=Rune of Water
 item.botania:rune1.name=Rune of Fire
 item.botania:rune2.name=Rune of Earth
@@ -2225,6 +2229,8 @@ botania.page.lens34=The &1Force Lens&0 acts as a &1Piston&0, when it hits a bloc
 botania.page.lens35=Force Lens
 botania.page.lens36=The &1Flash Lens&0, in contact with a block, creates a flame of the same color as the burst that caused it. The flame provides light and is purely decorative.<br>If it hits one of these flames, it puts it out instead.
 botania.page.lens37=Flash Lens
+botania.page.lens38=The &1Messenger Lens&0 massively decreases the amount of &4Mana&0 a &4Mana Burst&0 carries, and also drastically increases the burst's speed and maximum distance.<br>This can be very useful for interactions with blocks such as the &1Mana Detector&0, &1Drum of the Wild&0, among others.
+botania.page.lens39=Messenger Lens
 
 # -- MANA TABLET
 botania.entry.manaTablet=Mana Tablet
@@ -2279,6 +2285,8 @@ botania.page.elvenLenses7=The &1Celebratory Lens&0 functions much akin to the co
 botania.page.elvenLenses8=Celebratory Lens
 botania.page.elvenLenses9=The &1Flare Lens&0 takes over a &1Mana Spreader&0's functionality, preventing it from firing any bursts. Instead, the spreader becomes a continuous particle burst of the color the lens is dyed, in the direction the spreader is firing.<br>There's surely plenty of decorative uses for this.
 botania.page.elvenLenses10=Flare Lens
+botania.page.elvenLenses11=The &1Tripwire Lens&0 functions like a standard Tripwire albeit in a more concealed manner.<br>A spreader that has it attached will only be allowed to fire if there is one or more mobs, or players, in the path described by the &4mana burst&0 that the spreader would shoot.
+botania.page.elvenLenses12=Tripwire Lens
 
 # -- MANA PRISM
 botania.entry.prism=Mana Prism

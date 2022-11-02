@@ -66,6 +66,9 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeLensPhantom;
 	public static IRecipe recipeLensMagnet;
 	public static IRecipe recipeLensExplosive;
+	public static IRecipe recipeLensTripwire;
+	public static IRecipe recipeLensMessenger;
+
 	public static List<IRecipe> recipesUnstableBlocks;
 	public static IRecipe recipePylon;
 	public static IRecipe recipeDistributor;
@@ -1170,6 +1173,17 @@ public final class ModCraftingRecipes {
 		// Flare Lens Recipe
 		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 21), new ItemStack(ModItems.lens), new ItemStack(ModBlocks.elfGlass), LibOreDict.ELEMENTIUM);
 		recipeLensFlare = BotaniaAPI.getLatestAddedRecipe();
+
+		// Messenger Lens Recipe
+		addOreDictRecipe(new ItemStack(ModItems.lens, 1, 22),
+				" P ", "PLP", " P ",
+				'P', new ItemStack(Items.paper),
+				'L', new ItemStack(ModItems.lens));
+		recipeLensMessenger = BotaniaAPI.getLatestAddedRecipe();
+
+		// Tripwire Lens Recipe
+		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 23), new ItemStack(ModItems.lens), new ItemStack(Blocks.tripwire_hook), LibOreDict.ELEMENTIUM);
+		recipeLensTripwire = BotaniaAPI.getLatestAddedRecipe();
 
 		// Mini Island Recipes
 		for(int i = 0; i < 16; i++)

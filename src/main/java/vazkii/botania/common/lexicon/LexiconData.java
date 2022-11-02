@@ -453,7 +453,8 @@ public final class LexiconData {
 				new PageCraftingRecipe("7", ModCraftingRecipes.recipeLensVelocity), new PageText("8"),
 				new PageCraftingRecipe("9", ModCraftingRecipes.recipeLensPotency), new PageText("10"),
 				new PageCraftingRecipe("11", ModCraftingRecipes.recipeLensResistance), new PageText("12"),
-				new PageCraftingRecipe("13", ModCraftingRecipes.recipeLensEfficiency), new PageText("14"),
+				new PageCraftingRecipe("13", ModCraftingRecipes.recipeLensEfficiency), new PageText("38"),
+				new PageCraftingRecipe("39", ModCraftingRecipes.recipeLensMessenger), new PageText("14"),
 				new PageCraftingRecipe("15", ModCraftingRecipes.recipeLensBounce), new PageText("16"),
 				new PageCraftingRecipe("17", ModCraftingRecipes.recipeLensGravity), new PageText("18"),
 				new PageCraftingRecipe("19", ModCraftingRecipes.recipeLensBore), new PageText("20"),
@@ -504,7 +505,9 @@ public final class LexiconData {
 				new PageCraftingRecipe("4", ModCraftingRecipes.recipeLensWarp), new PageText("5"),
 				new PageCraftingRecipe("6", ModCraftingRecipes.recipeLensRedirect), new PageText("7"),
 				new PageCraftingRecipe("8", ModCraftingRecipes.recipeLensFirework), new PageText("9"),
-				new PageCraftingRecipe("10", ModCraftingRecipes.recipeLensFlare));
+				new PageCraftingRecipe("10", ModCraftingRecipes.recipeLensFlare), new PageText("11"),
+				new PageCraftingRecipe("12", ModCraftingRecipes.recipeLensTripwire));
+
 
 		prism = new ALexiconEntry(LibLexicon.MANA_PRISM, categoryMana);
 		prism.setLexiconPages(new PageText("0"), new PageText("1"), new PageText("2"),
