@@ -160,7 +160,7 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 		if(movingobjectposition != null)
 			vec31 = new Vector3(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord).toVec3D();
 
-		if(!worldObj.isRemote) {
+		if(!scanBeam && !worldObj.isRemote) { // Botania - only do entity colliding on server and while not scanning			Entity entity = null;
 			Entity entity = null;
 			List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
 			double d0 = 0.0D;
@@ -360,7 +360,7 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 		setTicksExisted(getTicksExisted() + 1);
 		superUpdate();
 
-		if(!fake && !isDead)
+		if(!fake && !isDead && !scanBeam)
 			ping();
 
 		ILensEffect lens = getLensInstance();
@@ -414,8 +414,11 @@ public class EntityManaBurst extends EntityThrowable implements IManaBurst {
 	public TileEntity getCollidedTile(boolean noParticles) {
 		this.noParticles = noParticles;
 
-		while(!isDead)
+		int iterations = 0;
+		while(!isDead && iterations < ConfigHandler.spreaderTraceTime) {
 			onUpdate();
+			iterations++;
+		}
 
 		if(fake)
 			incrementFakeParticleTick();
