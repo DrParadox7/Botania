@@ -592,7 +592,8 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 				active.removeAll(remove);
 
-				player.capabilities.isFlying = player.capabilities.isFlying && player.capabilities.isCreativeMode;
+				if (getPlayersAround().contains(player))
+					player.capabilities.isFlying = player.capabilities.isFlying && player.capabilities.isCreativeMode;
 
 				if(vazkii.botania.common.core.helper.MathHelper.pointDistanceSpace(player.posX, player.posY, player.posZ, source.posX + 0.5, source.posY + 0.5, source.posZ + 0.5) >= range) {
 					Vector3 sourceVector = new Vector3(source.posX + 0.5, source.posY + 0.5, source.posZ + 0.5);
@@ -760,8 +761,6 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 				if(spawnMissiles)
 					spawnMissile();
 			} else {
-				range = 3F;
-				players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(posX - range, posY - range, posZ - range, posX + range, posY + range, posZ + range));
 				if(!players.isEmpty())
 					damageEntity(DamageSource.causePlayerDamage(players.get(0)), 0);
 			}
