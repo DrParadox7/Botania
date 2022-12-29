@@ -137,7 +137,23 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 			}
 		}
 	}
-
+	public static void setMode(ItemStack stack, boolean state) {
+		stack.stackTagCompound.setBoolean(TAG_MODE, state);
+	}
+	@SideOnly(Side.CLIENT)
+	public static void renderHUDNotification(){
+		Minecraft mc = Minecraft.getMinecraft();
+		String text = getLokiModeText(getLokiRing(mc.thePlayer));
+		GTNHLib.proxy.printMessageAboveHotbar(text, 60, true, true);
+	}
+	public static String getLokiModeText(ItemStack stack){
+		return EnumChatFormatting.GOLD + StatCollector.translateToLocal("item.botania:lokiRing.name") + " " + (isRingEnabled(stack) ?
+				EnumChatFormatting.GREEN + StatCollector.translateToLocal("botaniamisc.lokiOn") :
+				EnumChatFormatting.RED + StatCollector.translateToLocal("botaniamisc.lokiOff"));
+	}
+	public static boolean isRingEnabled (final ItemStack stack){
+		return stack.stackTagCompound.getBoolean(TAG_MODE);
+	}
 	public static void breakOnAllCursors(EntityPlayer player, Item item, ItemStack stack, int x, int y, int z, int side) {
 		ItemStack lokiRing = getLokiRing(player);
 		if(lokiRing == null || player.worldObj.isRemote || !(item instanceof ISequentialBreaker))
