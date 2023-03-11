@@ -10,6 +10,7 @@
  */
 package vazkii.botania.client.render.entity;
 
+import cpw.mods.fml.common.Loader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
@@ -22,6 +23,8 @@ import vazkii.botania.api.internal.ShaderCallback;
 import vazkii.botania.client.core.handler.BossBarHandler;
 import vazkii.botania.client.core.helper.ShaderHelper;
 import vazkii.botania.common.entity.EntityDoppleganger;
+
+import lain.mods.skinport.impl.forge.SkinPortModelPlayer;
 
 public class RenderDoppleganger extends RenderBiped {
 
@@ -60,7 +63,14 @@ public class RenderDoppleganger extends RenderBiped {
 	};
 
 	public RenderDoppleganger() {
-		super(new ModelBiped(0.5F), 0F);
+		super(skinCompat(0.5F), 0F);
+	}
+
+	/**
+	 * Compat for SkinPort
+	 */
+	private static ModelBiped skinCompat(Float shadow) {
+		return Loader.isModLoaded("skinport") ? new SkinPortModelPlayer(shadow, false) : new ModelBiped(shadow);
 	}
 
 	@Override
