@@ -61,7 +61,7 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 	private static final String TAG_Y_ORIGIN = "yOrigin";
 	private static final String TAG_Z_ORIGIN = "zOrigin";
 	private static final String TAG_MODE = "mode";
-	private Boolean recursion = false;
+	private boolean recursion = false;
 
 	public ItemLokiRing() {
 		super(LibItemNames.LOKI_RING);
@@ -71,10 +71,10 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		if(recursion) return;
-
+		
 		EntityPlayer player = event.entityPlayer;
 		ItemStack lokiRing = getLokiRing(player);
-		if(lokiRing == null || player.worldObj.isRemote)
+		if (lokiRing == null || player.worldObj.isRemote)
 			return;
 
 		int slot = -1;
@@ -95,7 +95,7 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 
 		int cost = Math.min(cursorCount, (int) Math.pow(Math.E, cursorCount * 0.25));
 
-		if(heldItemStack == null && event.action == Action.RIGHT_CLICK_BLOCK && player.isSneaking() && isRingEnabled(lokiRing)) {
+		if (heldItemStack == null && event.action == Action.RIGHT_CLICK_BLOCK && player.isSneaking() && isRingEnabled(lokiRing)) {
 			if(originCoords.posY == -1 && lookPos != null) {
 				setOriginPos(lokiRing, lookPos.blockX, lookPos.blockY, lookPos.blockZ);
 				setCursorList(lokiRing, null);
@@ -127,39 +127,47 @@ public class ItemLokiRing extends ItemRelicBauble implements IExtendedWireframeC
 				}
 				}
 			}
-		} else if(heldItemStack != null && event.action == Action.RIGHT_CLICK_BLOCK && lookPos != null && isRingEnabled(lokiRing)) {
-			recursion = true;
+		} else if (heldItemStack != null && event.action == Action.RIGHT_CLICK_BLOCK && lookPos != null && isRingEnabled(lokiRing)) {
 			
+			recursion = true;			
+			double oldPosX = player.posX;
+			double oldPosY = player.posY;
+			double oldPosZ = player.posZ;
+
 			for(ChunkCoordinates cursor : cursors) {
 				int x = lookPos.blockX + cursor.posX;
 				int y = lookPos.blockY + cursor.posY;
 				int z = lookPos.blockZ + cursor.posZ;
 				Item item = heldItemStack.getItem();
-				if(!player.worldObj.isAirBlock(x, y, z) && ManaItemHandler.requestManaExact(lokiRing, player, cost, true)) {
-					
+				if (!player.worldObj.isAirBlock(x, y, z) && ManaItemHandler.requestManaExact(lokiRing, player, cost, true)) {
+					player.posX = cursor.posX+oldPosX;
+					player.posY = cursor.posY+oldPosY;
+					player.posZ = cursor.posZ+oldPosZ;
+
 					float hitX = (float) (lookPos.hitVec.xCoord - lookPos.blockX);
 					float hitY = (float) (lookPos.hitVec.yCoord - lookPos.blockY);
 					float hitZ = (float) (lookPos.hitVec.zCoord - lookPos.blockZ);
 					
 					Block markedBlock = player.worldObj.getBlock(x, y, z);
-					Boolean wasActivated = markedBlock.onBlockActivated(player.worldObj, x, y, z, player, lookPos.sideHit, hitX,hitY,hitZ);
+					boolean wasActivated = markedBlock.onBlockActivated(player.worldObj, x, y, z, player, lookPos.sideHit, hitX,hitY,hitZ);
 					
 					if (heldItemStack.stackSize == 0 ) {
 						event.setCanceled(true);
-						recursion = false;
-						return;
+						break;
 					}
-					if (!wasActivated) {
-						item.onItemUse(player.capabilities.isCreativeMode ? heldItemStack.copy() : heldItemStack, player, player.worldObj, x, y, z, lookPos.sideHit, (float) lookPos.hitVec.xCoord - x, (float) lookPos.hitVec.yCoord - y, (float) lookPos.hitVec.zCoord - z);						
+					if (!wasActivated) {						
+						item.onItemUse(player.capabilities.isCreativeMode ? heldItemStack.copy() : heldItemStack, player, player.worldObj, x, y, z, lookPos.sideHit, (float) lookPos.hitVec.xCoord - x, (float) lookPos.hitVec.yCoord - y, (float) lookPos.hitVec.zCoord - z);												
 						if(heldItemStack.stackSize == 0) {
 							event.setCanceled(true);
-							recursion = false;
-							return;
+							break;
 						}
 					}
 				}
 			}
 			recursion = false;
+			player.posX = oldPosX;
+			player.posY = oldPosY;
+			player.posZ = oldPosZ;
 		}
 	}
 	public static void setMode(ItemStack stack, boolean state) {
