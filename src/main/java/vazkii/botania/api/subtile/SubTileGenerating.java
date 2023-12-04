@@ -155,8 +155,10 @@ public class SubTileGenerating extends SubTileEntity {
 	public void emptyManaIntoCollector() {
 		if(linkedCollector != null && isValidBinding()) {
 			IManaCollector collector = (IManaCollector) linkedCollector;
-			if(!collector.isFull() && mana > 0) {
-				int manaval = Math.min(mana, collector.getMaxMana() - collector.getCurrentMana());
+
+			int sizeManaPacket = Math.min(getMaxManaTransfer(), mana);
+			if(!collector.isFull() && sizeManaPacket > 0) {
+				int manaval = Math.min(sizeManaPacket, collector.getMaxMana() - collector.getCurrentMana());
 				mana -= manaval;
 				collector.recieveMana(manaval);
 			}
@@ -182,6 +184,7 @@ public class SubTileGenerating extends SubTileEntity {
 	public int getValueForPassiveGeneration() {
 		return 1;
 	}
+	public int getMaxManaTransfer() { return 12800; }
 
 	@Override
 	public ArrayList<ItemStack> getDrops(ArrayList<ItemStack> list) {
