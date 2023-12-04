@@ -2482,9 +2482,11 @@ botania.page.nightshade1=&oDe schaduw van de dag&r
 # -- ENDOFLAME
 botania.entry.endoflame=Endovlam
 botania.tagline.endoflame=Mana uit brandstof
-botania.page.endoflame0=Terwijl de &1Dagbloem&0 een prima bloem is, heeft een botanist soms een meer effectieve manier nodig om &4Mana&0 te verkrijgen.<br>De &1Endovlam&0 doet precies dat, hij zal alle ontvlambare blokken die worden neergegooid in de nabije omgeving oppakken (met één tegelijk) en ze stuk voor stuk verbranden om passief &4Mana&0 te genereren.
-botania.page.endoflame1=Met een klein voorbehoud, de &1Endovlam&0 zal niets verbranden dat een restproduct oplevert, zoals een &1Emmer Lava&0 die een lege &1Emmer&0 achterlaat.<br>Door het gedrag van de bloem, is een &1Open Krat&0 aan te bevelen om de bloem zelfvoorzienend te maken, waar je over kunt lezen in het hoofdstuk &4Magische Apparaten&0.
+botania.page.endoflame0=Terwijl de &1Dagbloem&0 goed en wel is, heeft een botanicus effectievere middelen nodig om &4Mana&0 te genereren.<br>De &1Endovlam&0 doet precies dat; het absorbeert alle brandbare voorwerpen of blokken die in de nabije omgeving vallen en verbrandt ze om passief de warmte om te zetten in gegenereerd mana zolang de brandstof duurt.
+botania.page.endoflame1=Er zijn echter een paar kleine kanttekeningen. De &1Endovlam&0 zal niets verbranden dat een bijproduct oplevert, zoals bijvoorbeeld &1Emmer Lava&0, die enn lege &1Emmer&0 als bijproduct hebben.<br>Bovendien kan de bloem alleen brandstof bevatten equivalent aan dat van een &Kolenblok&0.
+botania.page.endoflame3=Wees voorzichtig! De &1Endovlam&0 is overdreven efficiënt en produceert meer mana dan het kan overdragen. Als het gegenereerde mana de maximale capaciteit overschrijdt, zal het leiden tot &4Oververhitting&0. Dit dwingt de &1Endovlam&0 om brandstof te verbranden zonder mana te genereren totdat zowel de brandstof als de mana-reserves volledig zijn uitgeput.
 botania.page.endoflame2=&oEndovlam&r
+
 
 # -- HYDROANGEAS
 botania.entry.hydroangeas=Hydroangea

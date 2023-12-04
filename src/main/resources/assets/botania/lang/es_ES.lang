@@ -1965,9 +1965,11 @@ botania.page.nightshade1=&oLa sombra del día&r.
 
 # -- ENDOFLAME
 botania.entry.endoflame=Endollama
-botania.page.endoflame0=Mientras que la &1flordía&0 esta bien y es buena, un botánico requiere medios más efectivos de generar &4maná&0.<br>La &1endollama&0 hace exactamente eso, absorberá cualquier objeto o bloque combustible caido en los alrededores (aunque un por vez) y los quemará para generar maná pasivamente mientras dure el combustible. 
-botania.page.endoflame1=Aunque hay una excepción, la &1endollama&0 no quemará algo que de un subproducto, un ejemplo son los &1cubos con lava&0, que tienen &1cubos&0 como subproducto.<br>Debido a su comportamiento, una &1caja abierta&0, puedes leer sobre ella en las sección de &4aparatos naturales&0, puede que sea un buen paso hacia ser autosostenible.
+botania.page.endoflame0=Mientras la &1Daybloom&0 está bien y es útil, un botánico necesita medios más efectivos para generar &4Mana&0.<br>La &1Endollama&0 hace precisamente eso; absorberá cualquier objeto combustible o bloques caídos en las cercanías y los quemará para convertir pasivamente su calor en mana generado mientras dure el combustible.
+botania.page.endoflame1=Sin embargo, hay algunas pequeñas advertencias. La &1Endollama&0 no quemará nada que genere un subproducto, como por ejemplo los &1cubos con lava&0, que tienen &1cubos&0 vacíos como subproducto.<br>Además, la flor solo puede contener combustible equivalente al de un &1Bloque de Carbón&0.
+botania.page.endoflame3=¡Ten cuidado! La &1Endollama&0 es demasiado eficiente, produce más mana del que puede transferir. Si su mana generado supera su capacidad máxima, provocará un &4Sobrecalentamiento&0. Esto hace que la &1Endollama&0 queme combustible sin generar mana hasta que tanto el combustible como las reservas de mana estén completamente agotadas.
 botania.page.endoflame2=&oNo es nitor&r.
+
 
 # -- HYDROANGEAS
 botania.entry.hydroangeas=Hidrortensia
