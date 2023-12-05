@@ -51,7 +51,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 
 						int itemFuel = stack == null || stack.getItem() == Item.getItemFromBlock(ModBlocks.spreader) ? 0 : TileEntityFurnace.getItemBurnTime(stack);
 						if (itemFuel > 0 && stack.stackSize > 0) {
-							this.burnTime = Math.min(FUEL_CAP, this.burnTime + itemFuel) / 4;
+							this.burnTime = Math.min(FUEL_CAP, this.burnTime + itemFuel / 4);
 
 							if (!supertile.getWorldObj().isRemote) {
 								stack.stackSize--;
@@ -101,15 +101,15 @@ public class SubTileEndoflame extends SubTileGenerating {
 
 	@Override
 	public int getMaxMana() {
-		return 2000;
+		return 900;
 	}
 
 	@Override
-	public int getMaxManaTransfer() { return 3; }
+	public int getMaxManaTransfer() { return 2; }
 
 	@Override
 	public int getValueForPassiveGeneration() {
-		return 7;
+		return 5;
 	}
 
 	@Override
