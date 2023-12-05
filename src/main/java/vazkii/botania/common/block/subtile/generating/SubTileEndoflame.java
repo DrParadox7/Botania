@@ -40,8 +40,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 
 		if(linkedCollector != null) {
 			boolean didSomething = false;
-
-			if (supertile.getWorldObj().getWorldTime() % 20 == 0) {
+			if (ticksExisted % 20 == 0) {
 				List<EntityItem> items = supertile.getWorldObj().getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(supertile.xCoord - RANGE, supertile.yCoord - RANGE, supertile.zCoord - RANGE, supertile.xCoord + RANGE + 1, supertile.yCoord + RANGE + 1, supertile.zCoord + RANGE + 1));
 				for (EntityItem item : items) {
 					if (item.age >= (59 + getSlowdownFactor()) && !item.isDead) {
@@ -51,7 +50,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 
 						int itemFuel = stack == null || stack.getItem() == Item.getItemFromBlock(ModBlocks.spreader) ? 0 : TileEntityFurnace.getItemBurnTime(stack);
 						if (itemFuel > 0 && stack.stackSize > 0) {
-							this.burnTime = Math.min(FUEL_CAP, this.burnTime + itemFuel) / 4;
+							this.burnTime = Math.min(FUEL_CAP, this.burnTime + itemFuel / 3);
 
 							if (!supertile.getWorldObj().isRemote) {
 								stack.stackSize--;
@@ -81,11 +80,9 @@ public class SubTileEndoflame extends SubTileGenerating {
 					supertile.getWorldObj().spawnParticle("largesmoke", supertile.xCoord + 0.4, supertile.yCoord + 0.65, supertile.zCoord + 0.4, 0.0D, 0.0D, 0.0D);
 
 				if (burnTime == 0) {
-					if (mana == 0)
-						burnOut = false;
+					if (mana == 0) { burnOut = false; }
 				} else
-					burnTime--;
-
+					burnTime = Math.min(burnTime -2, 0);
 			}
 			else if(burnTime > 0) {
 				if (supertile.getWorldObj().rand.nextInt(10) == 0)
@@ -101,15 +98,20 @@ public class SubTileEndoflame extends SubTileGenerating {
 
 	@Override
 	public int getMaxMana() {
-		return 2000;
+		return 900;
 	}
 
 	@Override
-	public int getMaxManaTransfer() { return 3; }
+	public int getMaxManaTransfer() { return 2; }
 
 	@Override
 	public int getValueForPassiveGeneration() {
-		return 7;
+		return 11;
+	}
+
+	@Override
+	public int getDelayBetweenPassiveGeneration() {
+		return 5;
 	}
 
 	@Override
@@ -147,10 +149,4 @@ public class SubTileEndoflame extends SubTileGenerating {
 	public boolean canGeneratePassively() {
 		return burnTime > 0 && !burnOut;
 	}
-
-	@Override
-	public int getDelayBetweenPassiveGeneration() {
-		return 2;
-	}
-
 }
