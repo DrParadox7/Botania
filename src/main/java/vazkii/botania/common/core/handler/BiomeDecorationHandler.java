@@ -17,6 +17,7 @@ import vazkii.botania.api.item.IFlowerlessWorld;
 import vazkii.botania.common.block.BlockModFlower;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.block.subtile.generating.SubTileDaybloom;
+import vazkii.botania.common.block.subtile.generating.SubTileNightshade;
 import vazkii.botania.common.block.tile.TileSpecialFlower;
 import vazkii.botania.common.lib.LibBlockNames;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -54,11 +55,21 @@ public class BiomeDecorationHandler {
 
 						if(event.world.isAirBlock(x1, y1, z1) && (!event.world.provider.hasNoSky || y1 < 127) && ModBlocks.flower.canBlockStay(event.world, x1, y1, z1)) {
 							if(primus) {
+								boolean primeNocturnal = event.rand.nextBoolean();
+
 								event.world.setBlock(x1, y1, z1, ModBlocks.specialFlower, 0, 2);
 								TileSpecialFlower flower = (TileSpecialFlower) event.world.getTileEntity(x1, y1, z1);
-								flower.setSubTile(event.rand.nextBoolean() ? LibBlockNames.SUBTILE_NIGHTSHADE_PRIME : LibBlockNames.SUBTILE_DAYBLOOM_PRIME);
-								SubTileDaybloom subtile = (SubTileDaybloom) flower.getSubTile();
-								subtile.setPrimusPosition();
+
+								flower.setSubTile(primeNocturnal ? LibBlockNames.SUBTILE_NIGHTSHADE_PRIME : LibBlockNames.SUBTILE_DAYBLOOM_PRIME);
+								if (primeNocturnal) {
+									SubTileNightshade subtile = (SubTileNightshade) flower.getSubTile();
+									subtile.setPrimusPosition();
+								}
+								else {
+									SubTileDaybloom subtile = (SubTileDaybloom) flower.getSubTile();
+									subtile.setPrimusPosition();
+								}
+
 							} else {
 								event.world.setBlock(x1, y1, z1, ModBlocks.flower, color, 2);
 								if(event.rand.nextDouble() < ConfigHandler.flowerTallChance && ((BlockModFlower) ModBlocks.flower).func_149851_a(event.world, x1, y1, z1, false))
