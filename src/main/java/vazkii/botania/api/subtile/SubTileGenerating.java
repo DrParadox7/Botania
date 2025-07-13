@@ -70,14 +70,18 @@ public class SubTileGenerating extends SubTileEntity {
 		linkCollector();
 
 		if(canGeneratePassively()) {
-			int delay = getDelayBetweenPassiveGeneration();
-			if(delay > 0 && ticksExisted % delay == 0 && !supertile.getWorldObj().isRemote) {
+			int generationDelay = getDelayBetweenPassiveGeneration();
+			if(generationDelay > 0 && ticksExisted % generationDelay == 0 && !supertile.getWorldObj().isRemote) {
 				if(shouldSyncPassiveGeneration())
 					sync();
 				addMana(getValueForPassiveGeneration());
 			}
 		}
-		emptyManaIntoCollector();
+
+		int transferDelay = getManaTransferDelay();
+		if (transferDelay < 1 || ticksExisted % transferDelay == 0) {
+			emptyManaIntoCollector();
+		}
 
 		if(acceptsRedstone()) {
 			redstoneSignal = 0;
@@ -185,6 +189,10 @@ public class SubTileGenerating extends SubTileEntity {
 		return 1;
 	}
 	public int getMaxManaTransfer() { return 12800; }
+
+	public int getManaTransferDelay() {
+		return 0;
+	}
 
 	@Override
 	public ArrayList<ItemStack> getDrops(ArrayList<ItemStack> list) {
