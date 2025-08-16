@@ -2521,9 +2521,6 @@ botania.page.nightshade1=&oA sombra do dia&r.
 # -- ENDOFLAME
 botania.entry.endoflame=Endoflame
 botania.tagline.endoflame=Mana por combustível
-botania.page.endoflame0=Enquanto a &1Daybloom&0 é boa e útil, um botânico necessita de meios mais eficazes para gerar &4Mana&0.<br>A &1Endoflame&0 faz exatamente isso, ela absorverá qualquer item combustível ou blocos caídos nas proximidades e os queimará para converter passivamente seu calor em mana gerado enquanto durar o combustível.
-botania.page.endoflame1=No entanto, há algumas pequenas ressalvas, a &1Endoflame&0 não queimará nada que gere um subproduto, um exemplo são os &1Baldes de Lava&0, que têm &1Balde&0 vazios como subproduto.<br>Além disso, a flor só pode armazenar combustível equivalente a um &1Bloco de Carvão&0.
-botania.page.endoflame3=Seja cauteloso! A &1Endoflame&0 é excessivamente eficiente, produzindo mais mana do que pode transferir. Caso sua mana gerada ultrapasse sua capacidade máxima, isso a fará &4Sobreaquecer&0. Isso faz com que a &1Endoflame&0 queime combustível sem gerar mana até que tanto o combustível quanto as reservas de mana estejam completamente esgotados.
 botania.page.endoflame2=&oNão é nitor&r.
 
 

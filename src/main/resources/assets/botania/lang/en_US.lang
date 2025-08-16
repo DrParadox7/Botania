@@ -2553,9 +2553,9 @@ botania.page.nightshade1=&oThe shadow of the day&r.
 # -- ENDOFLAME
 botania.entry.endoflame=Endoflame
 botania.tagline.endoflame=Mana from fuel
-botania.page.endoflame0=While the &1Daybloom&0 is all well and good, a botanist requires more effective means of generating &4Mana&0.<br>The &1Endoflame&0 does that exactly, it will absorb any combustible items or blocks dropped on the nearby vicinity and burn through them to passively convert its heat into generated mana while the fuel lasts.
-botania.page.endoflame1=There's a few small caveats though, the &1Endoflame&0 will not burn anything that returns a byproduct, an example are &1Lava Buckets&0, that have empty &1Buckets&0 as a byproduct.<br>Furthermore, the flower can only hold fuel equivalent to that of a &1Block of Coal&0.
-botania.page.endoflame3=Be cautious! The &1Endoflame&0 is overly efficient, producing more mana that it can transfer away. Should its generated mana exceed its maximum capacity it will cause it to &4Overheat&0. This the &1Endoflame&0 to burn fuel without generating mana until both fuel and mana reserves are completely depleted.
+botania.page.endoflame0=While the &1Daybloom&0 is all well and good, a botanist requires more effective means of generating &4Mana&0.<br>The &1Endoflame&0 does that exactly, it will burn through any combustible items dropped on the nearby vicinity to passively convert its heat into mana.
+botania.page.endoflame1=There's a few small caveats though, the &1Endoflame&0 will not burn anything that returns a byproduct, an example are &1Lava Buckets&0, that have empty &1Buckets&0 as a byproduct.<br>Furthermore, the flower gradually loses heat over time, making it a poor mana storage.
+botania.page.endoflame3=The Endoflame’s operations is affected by its heat: at low heat it boosts fuel efficiency while at high heat it progressively increases mana output at the cost of efficiency. If its heat exceeds capacity, it will &4Overheat&0, where it will require excess heat to be dissipates before resume normal operation.
 botania.page.endoflame2=&oNot nitor&r.
 
 # -- HYDROANGEAS

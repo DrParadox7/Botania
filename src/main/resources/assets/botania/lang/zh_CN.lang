@@ -2534,9 +2534,6 @@ botania.page.nightshade1=&o白日的阴影&r.
 # -- ENDOFLAME
 botania.entry.endoflame=火红莲
 botania.tagline.endoflame=燃烧产能
-botania.page.endoflame0=尽管&1太阳花&0很好,对植物魔法 师而言还需要更有效的生产 &4魔力&0的方法.<br>&1火红莲&0恰好是那样的,它会吸 收掉落在附近的任何可燃物 品和方块(每次一个)并在燃 烧期间释放出魔力.
-botania.page.endoflame1=有个小提示,&1火红莲&0不会燃烧 有燃烧产物的物品,比如&1岩浆&0 &1桶&0,会留下&1空桶&0.<br>根据它们的特性,你在书中所 见的&1花格箱&0或许能助你实现 它的补给.
-botania.page.endoflame2=&o不是闪耀之光&r.
 
 # -- HYDROANGEAS
 botania.entry.hydroangeas=水绣球

@@ -2528,9 +2528,6 @@ botania.page.nightshade1=&o白日的陰影&r.
 # -- ENDOFLAME
 botania.entry.endoflame=火紅蓮
 botania.tagline.endoflame=燃燒產能
-botania.page.endoflame0=儘管&1太陽花&0很好,對植物魔法 師而言還需要更有效的生產 &4瑪那&0的方法.<br>&1火紅蓮&0恰好是那樣的,它會吸 收掉落在附近的任何可燃物 品和方塊(每次一個)並在燃 燒期間釋放出瑪那.
-botania.page.endoflame1=有個小提示,&1火紅蓮&0不會燃燒 有燃燒產物的物品,比如&1岩漿&0 &1桶&0,會留下&1空桶&0.<br>根據它們的特性,你在書中所 見的&1花格箱&0或許能助你實現 它的補給.<br>Furthermore, the flower can only hold fuel equivalent to that of four times a &1Block of Coal&0. If any individual fuel with longer burn time than that is used, it won't be put to full efficiency.
-botania.page.endoflame3=As the &1Endoflame&0 is often a botanist's first foray into proper automatable &4Active Generating Flora&0, it would be best to not leave it to manual usage forever. As the flower requires dropped items, an &1Open Crate&0 (which you can find in the &4Natural Apparatus&0) section, and some sort of limiting mechanism (a timer or pressure plate) would be ideal for it.
 botania.page.endoflame2=&o不是閃耀之光&r.
 
 # -- HYDROANGEAS
